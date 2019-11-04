@@ -5,3 +5,6 @@ __pycache__/
 
 # ignore venv
 venv/*
+
+# ignore pyenv
+.python-version
