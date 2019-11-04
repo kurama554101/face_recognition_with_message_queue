@@ -1,0 +1,4 @@
+# base is Ubuntu 16.04
+FROM tensorflow/serving
+MAINTAINER kurama554101 <shotasakamoto554101@gmail.com>
+
