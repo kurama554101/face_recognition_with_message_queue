@@ -1,4 +1,39 @@
 # base is Ubuntu 16.04
-FROM tensorflow/serving
+FROM ubuntu:16.04
 MAINTAINER kurama554101 <shotasakamoto554101@gmail.com>
 
+# Start docker file
+RUN echo "now building..."
+
+# update apt-get
+RUN apt-get update --fix-missing
+
+# setup workdir
+WORKDIR /home/development/
+
+# add install directory
+ADD docker/install install/
+
+# install core packages
+RUN set -x && \
+    bash install/ubuntu_install_core_packages.sh
+
+# install Python and Pip
+RUN set -x && \
+    bash install/ubuntu_install_python.sh
+
+# install Kafka
+RUN set -x && \
+    bash install/ubuntu_install_kafka.sh
+
+# install Fuast
+RUN set -x && \
+    pip3 install -U faust, aiomonitor
+
+# install face_recognition framework
+RUN set -x && \
+    git clone --recursive https://github.com/ageitgey/face_recognition && \
+    pip3 install face_recognition
+
+# start bash
+# CMD [ '/bin/bash'  ]
