@@ -10,3 +10,6 @@ apt-get install -y openjdk-8-jdk
 
 # install kafkacat to debug
 apt-get install -y kafkacat
+
+# install aiokafka
+pip3 install aiokafka

@@ -30,5 +30,10 @@ RUN set -x && \
 RUN set -x && \
     pip3 install -U faust, aiomonitor
 
+# install face_recognition framework
+RUN set -x && \
+    git clone --recursive https://github.com/ageitgey/face_recognition && \
+    pip3 install face_recognition
+
 # start bash
 # CMD [ '/bin/bash'  ]

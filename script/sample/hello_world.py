@@ -2,7 +2,6 @@ import faust
 
 app = faust.App(
     'hello-world',
-    #broker='kafka://172.17.0.3:9092',
     broker='kafka://localhost:9092',
     value_serializer='raw',
 )
@@ -10,7 +9,7 @@ app = faust.App(
 greetings_topic = app.topic('greetings')
 
 
-# TOPICにデータが格納された実行される（Consumer処理）
+# TOPICにデータが格納されたら、実行される（Consumer処理）
 @app.agent(greetings_topic)
 async def greet(greetings):
     async for greeting in greetings:
